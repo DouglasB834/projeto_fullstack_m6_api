@@ -20,17 +20,8 @@ export class Users {
   @Column({ length: 50, unique: true })
   email: string;
 
-  @Column({ length: 200 })
-  password: string;
-
   @Column({ length: 15 })
   phone: string;
-
-  @Column({ length: 200, nullable: true })
-  avatar: string;
-
-  @Column({ default: true })
-  isActive: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -41,6 +32,6 @@ export class Users {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => Contacts, (contacts) => contacts.user)
+  @OneToMany(() => Contacts, (contacts) => contacts.user, { eager: true })
   contacts: Contacts[];
 }

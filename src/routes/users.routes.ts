@@ -4,6 +4,7 @@ import {
   listUserByIdController,
   softDeleteUserController,
   patchUserController,
+  listUsersController,
 } from "../controllers";
 import { userRequestSchema, userUpdateRequestSchema } from "../schemas";
 import {
@@ -18,7 +19,7 @@ usersRoutes.post(
   verifyRequestPerSchema(userRequestSchema),
   createUserController
 );
-
+usersRoutes.get("/users", listUsersController);
 usersRoutes.get("/users/:id", verifyUserIdParameter, listUserByIdController);
 
 usersRoutes.patch(

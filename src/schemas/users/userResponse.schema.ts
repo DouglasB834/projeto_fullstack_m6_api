@@ -7,7 +7,6 @@ export const userResponseSchema: SchemaOf<IUserResponse> = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
   phone: yup.string().required(),
-  avatar: yup.string().required(),
   isActive: yup.boolean().required(),
   createdAt: yup.date().required(),
   updatedAt: yup.date().required(),
