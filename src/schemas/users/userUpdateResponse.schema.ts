@@ -8,7 +8,6 @@ export const updateUserResponseSchema: SchemaOf<IUserResponseUpdate> = yup
     name: yup.string().required(),
     email: yup.string().email().required(),
     phone: yup.string().required(),
-    avatar: yup.string().required(),
     updatedAt: yup.date().required(),
     createdAt: yup.date().required(),
   });

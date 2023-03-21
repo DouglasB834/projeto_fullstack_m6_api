@@ -9,5 +9,4 @@ export const userUpdateRequestSchema: SchemaOf<IUserUpdate> = yup
     email: yup.string().email().notRequired(),
     password: yup.string().notRequired(),
     phone: yup.string().notRequired(),
-    avatar: yup.string().notRequired(),
   });

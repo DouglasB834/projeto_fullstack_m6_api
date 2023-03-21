@@ -26,9 +26,6 @@ export class Users {
   @Column({ length: 15 })
   phone: string;
 
-  @Column({ length: 200, nullable: true })
-  avatar: string;
-
   @Column({ default: true })
   isActive: boolean;
 
