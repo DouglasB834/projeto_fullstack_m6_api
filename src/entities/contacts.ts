@@ -6,6 +6,7 @@ import {
   DeleteDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+
 @Entity("registerUsers")
 export class Contacts {
   @PrimaryGeneratedColumn("uuid")
@@ -17,23 +18,11 @@ export class Contacts {
   @Column({ length: 50 })
   email: string;
 
-  @Column({ length: 200 })
-  password: string;
-
   @Column({ length: 15 })
   phone: string;
 
-  @Column({ default: true })
-  isActive: boolean;
-
   @CreateDateColumn()
   createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
 
   @ManyToOne(() => Users, (users) => users.contacts)
   user: Users;

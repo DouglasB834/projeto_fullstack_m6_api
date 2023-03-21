@@ -14,6 +14,7 @@ import {
 } from "../middleware";
 
 export const usersRoutes = Router();
+
 usersRoutes.post(
   "/users",
   verifyRequestPerSchema(userRequestSchema),

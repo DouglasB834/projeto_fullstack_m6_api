@@ -34,8 +34,24 @@ export interface IUserResponseUpdate {
   updatedAt: Date;
   createdAt: Date;
 }
+
 export interface iJwtPayload {
   sub?: string;
   id: string;
   email: string;
+}
+//  ========= contatos ==========
+export interface IContactRequest {
+  name: string;
+  email: string;
+  phone: string;
+  userId?: string;
+}
+export interface IContactResponse {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  createdAt: Date;
+  user: IUserResponse;
 }

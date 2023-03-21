@@ -6,6 +6,8 @@ import { patchUserController } from "./users/patchUser.controller";
 import { softDeleteUserController } from "./users/softDeleteUser.controller";
 import { listUsersController } from "./users/listUsers.controller";
 import { createContactsController } from "./contacts/createContact.controller";
+import { deleteContactController } from "./contacts/deleteContact.controller";
+import { listContacstController } from "./contacts/listContact.controller";
 
 export {
   loginController,
@@ -15,4 +17,6 @@ export {
   patchUserController,
   listUsersController,
   createContactsController,
+  deleteContactController,
+  listContacstController,
 };
