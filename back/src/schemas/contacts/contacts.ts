@@ -10,6 +10,15 @@ export const contactsSchema: SchemaOf<IContactRequest> = yup.object().shape({
   userId: yup.string(),
 });
 
+export const contactsUpdateSchema: SchemaOf<IContactRequest> = yup
+  .object()
+  .shape({
+    name: yup.string(),
+    email: yup.string().email(),
+    phone: yup.string(),
+    userId: yup.string(),
+  });
+
 export const contactResponseSchema: SchemaOf<IContactResponse> = yup
   .object()
   .shape({
@@ -18,7 +27,7 @@ export const contactResponseSchema: SchemaOf<IContactResponse> = yup
     email: yup.string().email().required(),
     phone: yup.string().required(),
     createdAt: yup.date().required(),
-    user: userResponseSchema,
+    // user: userResponseSchema,
   });
 
 export const userPetsResponseSchema = yup.object().shape({

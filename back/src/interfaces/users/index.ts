@@ -53,5 +53,5 @@ export interface IContactResponse {
   email: string;
   phone: string;
   createdAt: Date;
-  user: IUserResponse;
+  // user?: IUserResponse;
 }

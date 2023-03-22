@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { listContactService } from "../../services";
 
-export const listContacstController = async (
+export const listContactstController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
