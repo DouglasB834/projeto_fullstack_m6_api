@@ -7,9 +7,9 @@ export const listContactService = async (id: string) => {
     where: { id: id },
     relations: { contacts: true },
   });
-  //   return validatedContact;
-  //   const ContactsRepository = AppDataSource.getRepository(Contacts);
-  //   const petsList = await ContactsRepository.find();
-  delete user.password;
-  return user;
+  // return validatedContact;
+  // const ContactsRepository = AppDataSource.getRepository(Contacts);
+  // const contact = await ContactsRepository.find();
+  // delete user.password;
+  return user.contacts;
 };
