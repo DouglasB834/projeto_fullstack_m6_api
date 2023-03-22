@@ -7,7 +7,8 @@ import { listUsersService } from "./users/listUsers.service";
 import { createNewContactService } from "./contacts/createNewContact.service";
 import { listContactService } from "./contacts/listContacts.service";
 import { deleteContactService } from "./contacts/deleteContact.service";
-
+import { updadeContactService } from "./contacts/updadeContact.service";
+import { retrieverContactService } from "./contacts/retrieverContact.service";
 export {
   loginService,
   createUserService,
@@ -18,4 +19,6 @@ export {
   createNewContactService,
   listContactService,
   deleteContactService,
+  updadeContactService,
+  retrieverContactService,
 };

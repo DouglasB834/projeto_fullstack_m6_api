@@ -7,7 +7,9 @@ import { softDeleteUserController } from "./users/softDeleteUser.controller";
 import { listUsersController } from "./users/listUsers.controller";
 import { createContactsController } from "./contacts/createContact.controller";
 import { deleteContactController } from "./contacts/deleteContact.controller";
-import { listContacstController } from "./contacts/listContact.controller";
+import { listContactstController } from "./contacts/listContact.controller";
+import { updadeContactController } from "./contacts/update.controller";
+import { retrieverContactcController } from "./contacts/listRetriveContact.controller";
 
 export {
   loginController,
@@ -18,5 +20,7 @@ export {
   listUsersController,
   createContactsController,
   deleteContactController,
-  listContacstController,
+  listContactstController,
+  updadeContactController,
+  retrieverContactcController,
 };
