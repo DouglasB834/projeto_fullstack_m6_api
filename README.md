@@ -2,6 +2,8 @@
 
 ### Como rodar o projeto
 
+![Library](m6.drawio.png)
+
 - faça o clone teste repositírio
 - abra um terminal na sua pasta principal
 - rode : cd back/ para inicar o banco de dados
