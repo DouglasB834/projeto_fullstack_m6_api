@@ -1,5 +1,7 @@
 # S5-19 | 🏁 Entrega: desafio full stack
 
+### Este projeto consiste em criar um pequeno cadastro de clientes com vínculo de contatos, depois mostrar o cliente e seus contatos vinculados.
+
 ### Como rodar o projeto
 
 ![Library](m6.drawio.png)
