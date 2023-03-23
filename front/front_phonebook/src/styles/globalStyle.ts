@@ -75,6 +75,7 @@ input{
     background-color: var(--color-salmon);
 }
 
+
 #root {
 	width: 100%;
 	max-width: 100%;

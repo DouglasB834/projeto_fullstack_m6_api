@@ -1,7 +1,6 @@
 import { FormStyled } from "./form";
-import { ReactNode } from "react";
-import { IpropsChldres } from "../interfaces";
+import { IChldres } from "../interfaces";
 
-export const Loginform = ({ children }: IpropsChldres) => {
+export const Loginform = ({ children }: IChldres) => {
   return <FormStyled>{children}</FormStyled>;
 };

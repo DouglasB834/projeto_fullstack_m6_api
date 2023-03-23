@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 // import viteLogo from '/vite.svg'
 import "./App.css";
 import { MainRouter } from "./Routes";
+import { ContextUserProvider } from "./contexts/contextUser";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,7 +11,9 @@ function App() {
   return (
     <div className="App">
       <ChakraProvider>
-        <MainRouter />
+        <ContextUserProvider>
+          <MainRouter />
+        </ContextUserProvider>
       </ChakraProvider>
     </div>
   );

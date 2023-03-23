@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./loginValidador";
 import { IUserLogin } from "../../interfaces";
 import * as yup from "yup";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import imgPena from "../../assets/pena.png";
 import {
   Button,
@@ -20,8 +20,9 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Loginform } from "../../components";
-import { Link } from "react-router-dom";
+import { Link } from "@chakra-ui/react";
 import { Modelrecorver } from "../../components/Modelrecorver";
+import { useRequest } from "../../contexts/contextUser";
 
 StyledMainLogin;
 export const HomePage = () => {
@@ -33,12 +34,13 @@ export const HomePage = () => {
     resolver: yupResolver(loginSchema),
   });
 
+  const { login } = useRequest();
   const onSubmitForm = (data: IUserLogin) => {
     console.log(data);
+    login(data);
   };
 
   const [showPassword, setShowPassword] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     // <Center>
@@ -108,7 +110,11 @@ export const HomePage = () => {
           </FormControl>
           <Checkbox defaultChecked>save login?</Checkbox>
           <div className="container_links">
-            <Button className="btnLogin" onClick={handleSubmit(onSubmitForm)}>
+            <Button
+              color={"blue.300"}
+              className="btnLogin"
+              onClick={handleSubmit(onSubmitForm)}
+            >
               Login
             </Button>
             <p>
@@ -117,7 +123,10 @@ export const HomePage = () => {
                 <Modelrecorver />
               </span>
             </p>
-            <Link to="register">Let's go Sign up</Link>
+            <Link>
+              Let's go Sign up
+              <ExternalLinkIcon mx="2px" />
+            </Link>
           </div>
         </Loginform>
       </section>
