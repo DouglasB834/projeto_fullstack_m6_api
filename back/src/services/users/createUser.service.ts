@@ -22,8 +22,10 @@ export const createUserService = async (body: IUserRequest) => {
   }
 
   const newUser = userRepo.create(body);
+
   const hashedPassword = await hash(newUser.password, 10);
   newUser.password = hashedPassword;
+
   await userRepo.save(newUser);
 
   const validateResponse = await userResponseSchema.validate(newUser, {
