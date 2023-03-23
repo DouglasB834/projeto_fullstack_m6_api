@@ -4,9 +4,12 @@ export const StyleGlobal = createGlobalStyle`
 
 :root{
     --color-black:#242222;
-    --color-gray: #EEEEEE;
+    --color-blue: #4f67d8;
+    --color-blue2: #203F81;
     --color-white: #fff;
     --color-placeholder: #8A8787;
+
+	--color-text1: #fff;
 	
 
 }

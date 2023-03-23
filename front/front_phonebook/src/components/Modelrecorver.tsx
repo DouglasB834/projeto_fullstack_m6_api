@@ -15,21 +15,21 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-export const Register = () => {
+export const Modelrecorver = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
-
+      <span onClick={onOpen}>Click here</span>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Recover Login</ModalHeader>
+          <ModalHeader>Recover Password</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input placeContent="E-mail"></Input>
+              <Input placeholder="E-mail" />
             </FormControl>
           </ModalBody>
 
@@ -37,7 +37,6 @@ export const Register = () => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

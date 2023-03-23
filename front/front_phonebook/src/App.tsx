@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 // import viteLogo from '/vite.svg'
 import "./App.css";
 import { MainRouter } from "./Routes";
@@ -8,7 +9,9 @@ function App() {
 
   return (
     <div className="App">
-      <MainRouter />
+      <ChakraProvider>
+        <MainRouter />
+      </ChakraProvider>
     </div>
   );
 }

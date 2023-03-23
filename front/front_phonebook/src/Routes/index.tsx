@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage } from "../pages/Login";
+import { HomePage } from "../pages/homepage";
 import { Register } from "../pages/Register";
 
 export const MainRouter = () => (
