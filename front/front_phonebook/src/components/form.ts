@@ -12,6 +12,7 @@ export const FormStyled = styled.div`
     object-fit: cover;
 
     .btnEya {
+      color: var(--color-black);
       height: auto;
     }
   }

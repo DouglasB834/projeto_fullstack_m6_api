@@ -1,11 +1,15 @@
 import { createGlobalStyle } from "styled-components";
+import { extendTheme } from "@chakra-ui/react";
 
 export const StyleGlobal = createGlobalStyle`
+
+
 
 :root{
     --color-black:#242222;
     --color-blue: #4f67d8;
     --color-blue2: #203F81;
+    --color-blue3: #2B6CB0;
     --color-white: #fff;
     --color-placeholder: #8A8787;
 
@@ -146,8 +150,34 @@ input{
 	width: 100%;
 	max-width: 100%;
 }
+.title{
+	text-align: center;
+	color: var(--color-text1);
+	margin-top: 5px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+.container_modal{
+	padding: 1rem;
+	.register_modal{
+		border-radius: 5px;
+		background-color: var(--color-blue3);
+		input{
+			
+		}
 
+		.btnEya{
+			height: auto;
+		}
+		.container_links{
+			margin-top: 1rem;
+			text-align: center;
+		}
 
+	}
+
+	
+}
 
 
 `;

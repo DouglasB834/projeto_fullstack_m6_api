@@ -1,28 +1,26 @@
 import { useForm } from "react-hook-form";
-import { FormStyled } from "../../components/form";
 import { StyledMainLogin } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "./loginValidador";
+import { loginSchema } from "./validadorRequest";
 import { IUserLogin } from "../../interfaces";
-import * as yup from "yup";
+
 import { ExternalLinkIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import imgPena from "../../assets/pena.png";
 import {
   Button,
-  Center,
   Checkbox,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputRightElement,
-  useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Loginform } from "../../components";
-import { Link } from "@chakra-ui/react";
-import { Modelrecorver } from "../../components/Modelrecorver";
+import { Modelrecorver } from "../../components/ModelRecorver";
 import { useRequest } from "../../contexts/contextUser";
+import { Modalregister } from "../../components/ModalRegister";
+import { useNavigate } from "react-router-dom";
 
 StyledMainLogin;
 export const HomePage = () => {
@@ -35,17 +33,24 @@ export const HomePage = () => {
   });
 
   const { login } = useRequest();
+
   const onSubmitForm = (data: IUserLogin) => {
-    console.log(data);
     login(data);
   };
-
+  const token = localStorage.getItem("@phonebook:token");
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      navigate("/home", { replace: true });
+    }
+  }, []);
 
   return (
     // <Center>
     <StyledMainLogin>
-      <h1>Welcome Your Phonebook</h1>
+      <h1>Welcome to Your Phonebook</h1>
       <section className="container_login">
         <div className="box_content">
           <h2>Welcome Back</h2>
@@ -57,7 +62,6 @@ export const HomePage = () => {
             access to a complete phone book. Sign up or login
           </p>
         </div>
-
         <Loginform>
           <FormControl
             className="formLogin"
@@ -73,6 +77,7 @@ export const HomePage = () => {
               E-mail
             </FormLabel>
             <Input
+              _placeholder={{ color: "white" }}
               placeholder="Email"
               required
               size="sm"
@@ -86,6 +91,7 @@ export const HomePage = () => {
             <FormLabel marginTop={"1rem"}>Password</FormLabel>
             <InputGroup>
               <Input
+                _placeholder={{ color: "white" }}
                 placeholder="password"
                 size="sm"
                 borderRadius={"5px"}
@@ -123,10 +129,10 @@ export const HomePage = () => {
                 <Modelrecorver />
               </span>
             </p>
-            <Link>
-              Let's go Sign up
+            <span>
+              <Modalregister />
               <ExternalLinkIcon mx="2px" />
-            </Link>
+            </span>
           </div>
         </Loginform>
       </section>

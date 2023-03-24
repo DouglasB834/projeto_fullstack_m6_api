@@ -47,5 +47,20 @@ export const StyledMainLogin = styled.main`
         }
       }
     }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+
+      .box_content {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.4rem;
+    }
   }
 `;
