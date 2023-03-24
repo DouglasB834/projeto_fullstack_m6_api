@@ -33,7 +33,10 @@ export const Modelrecorver = () => {
             </FormControl>
           </ModalBody>
 
-          <ModalFooter>
+          <ModalFooter display={"block"}>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Enviar
+            </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>

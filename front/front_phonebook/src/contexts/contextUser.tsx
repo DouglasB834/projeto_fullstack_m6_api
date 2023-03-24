@@ -7,7 +7,7 @@ import { Box, useToast } from "@chakra-ui/react";
 export interface iRequestProvid {
   login: (data: IUserLogin) => void;
 
-  //   onSubmitRegister: (data: IUserRegister) => void;
+  registerUser: (data: IUserRegister) => void;
 }
 
 export const ContextUser = createContext({} as iRequestProvid);
@@ -21,28 +21,69 @@ export const ContextUserProvider = ({ children }: IChldres) => {
       const response = await api.post("/login", userData);
       const { user, token } = response.data;
 
-      console.log(response);
-
-      // localStorage.setItem("@phonebook:id", user.id);
+      localStorage.setItem("@phonebook:id", user.id);
       localStorage.setItem("@phonebook:token", token);
-      navigate("/", { replace: true });
+
+      // toast({
+      //   title: "Login sucess",
+      //   position: "top-right",
+      //   isClosable: true,
+
+      //   render: () => (
+      //     <Box color="white" p={3} bg="blue.500">
+      //       logging...
+      //     </Box>
+      //   ),
+      // });
+      navigate("/home", { replace: true });
+    } catch (error: any) {
+      const toastmsg = error.response.data.message;
       toast({
-        title: "Login sucess",
+        title: "error loging",
+        position: "top-right",
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="red.400">
+            {`${toastmsg}`}
+          </Box>
+        ),
+      });
+    }
+  };
+
+  const registerUser = async (data: IUserRegister) => {
+    try {
+      const response = await api.post<IUserRegister>("/users", data);
+      toast({
+        title: "Create success",
         position: "top-right",
         isClosable: true,
         render: () => (
           <Box color="white" p={3} bg="blue.500">
-            logging...
+            Create success...
           </Box>
         ),
       });
-    } catch (error) {
-      console.log(error);
+      navigate("/");
+    } catch (error: any) {
+      const toastmsg = error.response.data.message;
+      toast({
+        title: "error register",
+        position: "top-right",
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            {`${toastmsg}`}
+          </Box>
+        ),
+      });
     }
   };
 
   return (
-    <ContextUser.Provider value={{ login }}>{children}</ContextUser.Provider>
+    <ContextUser.Provider value={{ login, registerUser }}>
+      {children}
+    </ContextUser.Provider>
   );
 };
 
