@@ -8,12 +8,18 @@ import {
 } from "@chakra-ui/react";
 import { CardList } from "../../components/cardList";
 import { HeaderForm } from "../../components/Header";
-import { ModalAddContact } from "../../components/Modelas/AddContact";
+import { ModalAddContact } from "../../components/Modelas/ModalAddContact";
 import { DashBoardMain, UlStyled } from "./style";
 import imgbg from "../../assets/girlsbg.png";
 import imgbg2 from "../../assets/groupbg.png";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/ContextData";
 
 export const Dashboard = () => {
+  const { contacts, listContacts } = useContext(DataContext);
+
+  // listContacts();
+  // console.log(contacts);
   return (
     <>
       <HeaderForm />

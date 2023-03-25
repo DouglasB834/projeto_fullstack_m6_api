@@ -24,10 +24,13 @@ import {
   MenuGroup,
   MenuDivider,
   Textarea,
+  Center,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRequest } from "../../contexts/contextUser";
+import { useRequest } from "../../contexts/contextRequestUser";
+import { ModalEditUser } from "../Modelas/ModalEditUser";
+import { ModalMyAccount } from "../Modelas/ModalMyAccount";
 
 export const HeaderForm = () => {
   const navagate = useNavigate();
@@ -39,7 +42,7 @@ export const HeaderForm = () => {
   };
 
   //   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {} = useRequest();
+  const { user } = useRequest();
   const token = localStorage.getItem("@phonebook:token");
   useEffect(() => {
     if (!token) {
@@ -47,6 +50,9 @@ export const HeaderForm = () => {
     }
   });
 
+  const clickModal = () => {
+    <ModalEditUser />;
+  };
   return (
     <>
       <Box bg={"var(--color-blue2)"} px={4}>
@@ -63,11 +69,12 @@ export const HeaderForm = () => {
             display={{ md: "none" }}
             aria-label={"Open Menu"}
           /> */}
+
           <Flex alignItems={"center"}>
             <>
               <Menu>
                 <Text m={1} color={"var(--color-white)"}>
-                  Hi {"Douglas"}
+                  Hi {user?.name}
                 </Text>
                 <MenuButton
                   as={Button}
@@ -76,13 +83,13 @@ export const HeaderForm = () => {
                   variant="link"
                   minW={0}
                 >
-                  <Avatar name={"Douglas Borges"} size={"sm"} src={""} />
+                  <Avatar name={user?.name} size={"sm"} src={""} />
                 </MenuButton>
 
                 <MenuList m={-3.5} mt={"4px"} bg={"var(--color-blue2)"}>
                   <MenuGroup title="Profile">
-                    <MenuItem>My Account</MenuItem>
-                    <MenuItem icon={<RepeatIcon />}>Setting</MenuItem>
+                    <ModalMyAccount />
+                    <ModalEditUser />
                   </MenuGroup>
                   <MenuDivider />
                   <MenuGroup title="Help">
@@ -96,11 +103,7 @@ export const HeaderForm = () => {
                     </MenuItem>
                   </MenuGroup>
                   <MenuGroup title="Logout">
-                    <MenuItem
-                      fontSize={"sm"}
-                      //   as={Button}
-                      onClick={Logout}
-                    >
+                    <MenuItem fontSize={"sm"} onClick={Logout}>
                       Logout
                     </MenuItem>
                   </MenuGroup>

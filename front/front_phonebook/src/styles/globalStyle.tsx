@@ -14,6 +14,7 @@ export const StyleGlobal = createGlobalStyle`
     --color1: #FFDA99;
     --color2: #ffa500;
     --color3: #ffa6007d;
+    --color5: #abe4ff;
     --color4: rgb(255, 165, 0,.2);;
 
     --color-placeholder: #8A8787;

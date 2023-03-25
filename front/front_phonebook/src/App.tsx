@@ -2,15 +2,18 @@ import { ChakraProvider } from "@chakra-ui/react";
 // import viteLogo from '/vite.svg'
 import "./App.css";
 import { MainRouter } from "./Routes";
-import { ContextUserProvider } from "./contexts/contextUser";
+import { ContextRequestUserProvider } from "./contexts/contextRequestUser";
+import { DataProvider } from "./contexts/ContextData";
 
 function App() {
   return (
     <div className="App">
       <ChakraProvider>
-        <ContextUserProvider>
-          <MainRouter />
-        </ContextUserProvider>
+        <ContextRequestUserProvider>
+          <DataProvider>
+            <MainRouter />
+          </DataProvider>
+        </ContextRequestUserProvider>
       </ChakraProvider>
     </div>
   );

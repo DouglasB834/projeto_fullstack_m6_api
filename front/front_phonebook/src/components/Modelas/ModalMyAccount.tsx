@@ -3,6 +3,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -15,28 +16,31 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-export const ModelRecorver = () => {
+export const ModalMyAccount = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <span onClick={onOpen}>Click here</span>
+      <Text
+        cursor={"pointer"}
+        borderTop={"1px solid black"}
+        p={"5px 11px"}
+        bg={"white"}
+        _hover={{ bg: "var(--color5)" }}
+        onClick={() => {
+          onOpen();
+        }}
+      >
+        My Account
+      </Text>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader alignSelf={"center"}>Recover Password</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <FormControl>
-              <FormLabel>Email</FormLabel>
-              <Input placeholder="E-mail" />
-            </FormControl>
-          </ModalBody>
+          <ModalBody></ModalBody>
 
-          <ModalFooter display={"block"}>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Deleta
-            </Button>
+          <ModalFooter alignSelf={"center"} display={"block"}>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
