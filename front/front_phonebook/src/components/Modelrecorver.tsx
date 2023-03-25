@@ -15,7 +15,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-export const Modelrecorver = () => {
+export const ModelRecorver = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -24,7 +24,7 @@ export const Modelrecorver = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Recover Password</ModalHeader>
+          <ModalHeader alignSelf={"center"}>Recover Password</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>

@@ -18,8 +18,8 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Loginform } from "../../components";
-import { Modelrecorver } from "../../components/ModelRecorver";
-import { useRequest } from "../../contexts/contextUser";
+import { ModelRecorver } from "../../components/ModelRecorver";
+import { useRequest } from "../../contexts/contextRequestUser";
 import { Modalregister } from "../../components/ModalRegister";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +41,7 @@ export const HomePage = () => {
     login(data);
   };
   const token = localStorage.getItem("@phonebook:token");
-  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export const HomePage = () => {
             <p>
               Forgot your password? ➡
               <span>
-                <Modelrecorver />
+                <ModelRecorver />
               </span>
             </p>
           </div>

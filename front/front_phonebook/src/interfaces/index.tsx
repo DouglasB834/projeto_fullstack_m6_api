@@ -15,3 +15,28 @@ export interface IUserRegister {
 export interface IChldres {
   children: ReactNode;
 }
+
+export interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  password?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  isActive?: boolean;
+}
+export interface IContacts {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  createdAt: Date;
+}
+export interface IListContactUser {
+  id: string;
+  name: string;
+  phone: string;
+  email?: string;
+  contacts: IContacts[];
+}

@@ -1,18 +1,22 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../Api/axios";
-import { IChldres, IUserLogin, IUserRegister } from "../interfaces";
+import { IChldres, IUser, IUserLogin, IUserRegister } from "../interfaces";
 import { Box, useToast } from "@chakra-ui/react";
+import { DataContext } from "./ContextData";
 
 export interface iRequestProvid {
   login: (data: IUserLogin) => void;
-
+  user: IUser;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
   registerUser: (data: IUserRegister) => void;
 }
 
-export const ContextUser = createContext({} as iRequestProvid);
+export const ContextRequestUser = createContext({} as iRequestProvid);
 
-export const ContextUserProvider = ({ children }: IChldres) => {
+export const ContextRequestUserProvider = ({ children }: IChldres) => {
+  // const { setUser } = useContext(DataContext);
+  const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -23,18 +27,7 @@ export const ContextUserProvider = ({ children }: IChldres) => {
 
       localStorage.setItem("@phonebook:id", user.id);
       localStorage.setItem("@phonebook:token", token);
-
-      // toast({
-      //   title: "Login sucess",
-      //   position: "top-right",
-      //   isClosable: true,
-
-      //   render: () => (
-      //     <Box color="white" p={3} bg="blue.500">
-      //       logging...
-      //     </Box>
-      //   ),
-      // });
+      setUser(user);
       navigate("/home", { replace: true });
     } catch (error: any) {
       const toastmsg = error.response.data.message;
@@ -81,11 +74,11 @@ export const ContextUserProvider = ({ children }: IChldres) => {
   };
 
   return (
-    <ContextUser.Provider value={{ login, registerUser }}>
+    <ContextRequestUser.Provider value={{ login, registerUser, user, setUser }}>
       {children}
-    </ContextUser.Provider>
+    </ContextRequestUser.Provider>
   );
 };
 
 //criando meu hook
-export const useRequest = () => useContext(ContextUser);
+export const useRequest = () => useContext(ContextRequestUser);
