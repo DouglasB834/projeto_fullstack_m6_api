@@ -1,8 +1,11 @@
+import { AtSignIcon, ChatIcon, PhoneIcon } from "@chakra-ui/icons";
 import {
   Button,
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
+  InputRightElement,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -29,17 +32,79 @@ export const ModalAddContact = () => {
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Add new Contact </ModalHeader>
+        <ModalContent w={"95%"}>
+          <ModalHeader alignSelf={"center"}>Add new Contact </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>
-              <FormLabel>Email</FormLabel>
-              <Input placeholder="E-mail" />
+              <FormLabel marginTop={"1rem"} fontSize=".9rem">
+                Name
+              </FormLabel>
+              <InputGroup>
+                <Input
+                  _placeholder={{ color: "var(color-text)" }}
+                  placeholder={`name `}
+                  required
+                  size="sm"
+                  borderRadius={"5px"}
+                  focusBorderColor="blue.300"
+                  type="text"
+                  // {...register("name")}
+                />
+                {/* <p>{errors.name?.message}</p> */}
+                <InputRightElement
+                  pointerEvents={"none"}
+                  children={<ChatIcon color={"gray.300"} />}
+                />
+              </InputGroup>
+              <FormLabel marginTop={"1rem"} fontSize=".9rem">
+                E-mail
+              </FormLabel>
+              <InputGroup>
+                <Input
+                  _placeholder={{ color: "var(color-text)" }}
+                  placeholder={`E-mail... `}
+                  required
+                  size="sm"
+                  borderRadius={"5px"}
+                  focusBorderColor="blue.300"
+                  type="text"
+                  // {...register("name")}
+                />
+                {/* <p>{errors.name?.message}</p> */}
+                <InputRightElement
+                  pointerEvents={"none"}
+                  children={<AtSignIcon color="gray.300" />}
+                />
+              </InputGroup>
+              <FormLabel marginTop={"1rem"} fontSize=".9rem">
+                Phone
+              </FormLabel>
+              <InputGroup>
+                <Input
+                  _placeholder={{ color: "var(color-text)" }}
+                  placeholder={`Phone number `}
+                  required
+                  size="sm"
+                  borderRadius={"5px"}
+                  focusBorderColor="blue.300"
+                  type="text"
+                  // {...register("name")}
+                />
+                {/* <p>{errors.name?.message}</p> */}
+                <InputRightElement
+                  pointerEvents={"none"}
+                  children={<PhoneIcon color="gray.300" />}
+                />
+              </InputGroup>
             </FormControl>
           </ModalBody>
 
-          <ModalFooter display={"block"}>
+          <ModalFooter
+            display={"flex"}
+            // flexDirection={"column"}
+            justifyContent={"space-between"}
+          >
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Enviar
             </Button>
