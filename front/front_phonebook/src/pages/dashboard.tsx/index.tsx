@@ -43,6 +43,7 @@ export const Dashboard = () => {
               <Input
                 _hover={{ borderColor: "var(--color2)" }}
                 type="text"
+                css={{ "::placeholder": { color: "var(--color-text)" } }}
                 placeholder="Search Ccontact"
               />
             </InputGroup>

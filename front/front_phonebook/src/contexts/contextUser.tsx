@@ -24,17 +24,6 @@ export const ContextUserProvider = ({ children }: IChldres) => {
       localStorage.setItem("@phonebook:id", user.id);
       localStorage.setItem("@phonebook:token", token);
 
-      // toast({
-      //   title: "Login sucess",
-      //   position: "top-right",
-      //   isClosable: true,
-
-      //   render: () => (
-      //     <Box color="white" p={3} bg="blue.500">
-      //       logging...
-      //     </Box>
-      //   ),
-      // });
       navigate("/home", { replace: true });
     } catch (error: any) {
       const toastmsg = error.response.data.message;

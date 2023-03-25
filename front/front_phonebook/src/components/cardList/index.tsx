@@ -7,16 +7,13 @@ import {
   CardBody,
   CardFooter,
   Divider,
-  Flex,
   Heading,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { LiStyled } from "./style";
 
 export const CardList = () => {
   return (
-    // <LiStyled>
     <Card maxH={335} maxW="17rem">
       <CardBody>
         <div className="imgContact">
@@ -36,15 +33,18 @@ export const CardList = () => {
           display={"flex"}
           justifyContent={"space-between"}
         >
-          <Button variant="solid" colorScheme="blue">
+          <Button
+            css={{ background: "var(--color1)", color: "red" }}
+            variant="solid"
+            // colorScheme="blue"
+          >
             Delete
           </Button>
-          <Button variant="ghost" colorScheme="blue">
-            Update
+          <Button bg={"blue.200"} variant="ghost" colorScheme="blue">
+            Editar
           </Button>
         </ButtonGroup>
       </CardFooter>
     </Card>
-    // </LiStyled>
   );
 };
