@@ -8,6 +8,7 @@ export const listContactService = async (id: string) => {
       id: true,
       name: true,
       phone: true,
+      email: true,
     },
     where: { id: id },
     relations: { contacts: true },
