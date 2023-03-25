@@ -24,8 +24,7 @@ usersRoutes.get("/users", listUsersController);
 usersRoutes.get("/users/:id", verifyUserIdParameter, listUserByIdController);
 
 usersRoutes.patch(
-  "/users/:id",
-  verifyUserIdParameter,
+  "/users",
   verifyAuth,
   verifyRequestPerSchema(userUpdateRequestSchema),
   patchUserController
