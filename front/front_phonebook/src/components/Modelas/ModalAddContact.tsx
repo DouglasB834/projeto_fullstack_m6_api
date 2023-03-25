@@ -30,7 +30,7 @@ export const ModalAddContact = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Recover Password</ModalHeader>
+          <ModalHeader>Add new Contact </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>
