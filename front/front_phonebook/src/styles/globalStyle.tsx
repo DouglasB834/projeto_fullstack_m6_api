@@ -11,6 +11,11 @@ export const StyleGlobal = createGlobalStyle`
     --color-blue2: #203F81;
     --color-blue3: #2B6CB0;
     --color-white: #fff;
+    --color1: #FFDA99;
+    --color2: #ffa500;
+    --color3: #ffa6007d;
+    --color4: rgb(255, 165, 0,.2);;
+
     --color-placeholder: #8A8787;
 
 	--color-text1: #fff;
@@ -152,7 +157,7 @@ input{
 }
 .title{
 	text-align: center;
-	color: var(--color-text1);
+	color: var(--color-black);
 	margin-top: 5px;
 	font-weight: 600;
 	letter-spacing: 1px;

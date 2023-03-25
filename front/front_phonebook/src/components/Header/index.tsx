@@ -23,6 +23,7 @@ import {
   WrapItem,
   MenuGroup,
   MenuDivider,
+  Textarea,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -65,6 +66,9 @@ export const HeaderForm = () => {
           <Flex alignItems={"center"}>
             <>
               <Menu>
+                <Text m={1} color={"var(--color-white)"}>
+                  Hi {"Douglas"}
+                </Text>
                 <MenuButton
                   as={Button}
                   rounded={"full"}
@@ -72,14 +76,10 @@ export const HeaderForm = () => {
                   variant="link"
                   minW={0}
                 >
-                  <Wrap className="btn_settings_menu">
-                    <WrapItem>
-                      <Avatar name={"Douglas Borges"} size={"sm"} src={""} />
-                    </WrapItem>
-                  </Wrap>
+                  <Avatar name={"Douglas Borges"} size={"sm"} src={""} />
                 </MenuButton>
 
-                <MenuList m={-4} mt={"4px"} bg={"var(--color-blue2)"}>
+                <MenuList m={-3.5} mt={"4px"} bg={"var(--color-blue2)"}>
                   <MenuGroup title="Profile">
                     <MenuItem>My Account</MenuItem>
                     <MenuItem icon={<RepeatIcon />}>Setting</MenuItem>

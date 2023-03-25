@@ -15,12 +15,18 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-export const Modelrecorver = () => {
+export const ModalAddContact = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <span onClick={onOpen}>Click here</span>
+      <Button
+        border="solid 1px   var(--color2)"
+        _hover={{ bg: "var(--color4)", color: "var(--color2)" }}
+        onClick={onOpen}
+      >
+        Add Contact
+      </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -35,7 +41,7 @@ export const Modelrecorver = () => {
 
           <ModalFooter display={"block"}>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Deleta
+              Enviar
             </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
