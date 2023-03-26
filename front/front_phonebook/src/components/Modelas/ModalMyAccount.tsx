@@ -22,7 +22,7 @@ import { useRequest } from "../../contexts/contextRequestUser";
 
 export const ModalMyAccount = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { user } = useRequest();
+  const { user, deleteUser } = useRequest();
 
   return (
     <>
@@ -64,7 +64,10 @@ export const ModalMyAccount = () => {
             </Flex>
           </ModalBody>
 
-          <ModalFooter alignSelf={"center"} display={"block"}>
+          <ModalFooter alignSelf={"center"} display={"flex"} gap={"2rem"}>
+            <Button color={"red.500"} onClick={deleteUser}>
+              Delete Account
+            </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>

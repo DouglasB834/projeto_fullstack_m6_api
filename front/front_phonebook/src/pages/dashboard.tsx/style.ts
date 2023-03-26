@@ -24,7 +24,7 @@ export const UlStyled = styled.ul`
   max-height: 750px;
   min-height: 600px;
   overflow-x: hidden;
-  justify-content: center;
+  /* justify-content: center; */
 
   .imgContact {
     text-align: center;

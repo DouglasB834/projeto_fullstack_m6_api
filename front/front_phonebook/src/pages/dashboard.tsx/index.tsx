@@ -16,10 +16,8 @@ import { useContext } from "react";
 import { DataContext } from "../../contexts/ContextData";
 
 export const Dashboard = () => {
-  const { contacts, listContacts } = useContext(DataContext);
+  const { contacts } = useContext(DataContext);
 
-  // listContacts();
-  // console.log(contacts);
   return (
     <>
       <HeaderForm />
@@ -56,11 +54,9 @@ export const Dashboard = () => {
           </Flex>
 
           <UlStyled>
-            <CardList />
-            <CardList />
-            <CardList />
-            <CardList />
-            <CardList />
+            {contacts.map((contac) => (
+              <CardList key={contac.id} contact={contac} />
+            ))}
           </UlStyled>
         </Box>
       </DashBoardMain>

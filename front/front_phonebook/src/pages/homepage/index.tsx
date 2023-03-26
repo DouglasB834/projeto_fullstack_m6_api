@@ -27,6 +27,8 @@ import imgflor from "../../assets/fundo_img.png";
 
 StyledMainLogin;
 export const HomePage = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -45,9 +47,9 @@ export const HomePage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    // if (token) {
-    //   navigate("/home", { replace: true });
-    // }
+    if (token) {
+      navigate("/home", { replace: true });
+    }
   }, []);
 
   return (
