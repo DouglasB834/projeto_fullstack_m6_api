@@ -10,17 +10,19 @@ import {
   Box,
   Button,
   Checkbox,
+  Divider,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputRightElement,
+  Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Loginform } from "../../components";
 import { ModelRecorver } from "../../components/ModelRecorver";
 import { useRequest } from "../../contexts/contextRequestUser";
-import { Modalregister } from "../../components/ModalRegister";
+import { Modalregister } from "../../components/Modelas/ModalRegister";
 import { useNavigate } from "react-router-dom";
 
 import imgflor from "../../assets/fundo_img.png";
@@ -54,12 +56,19 @@ export const HomePage = () => {
 
   return (
     // <Center>
-    <StyledMainLogin>
-      <h1>Welcome to Your Phonebook</h1>
+    <StyledMainLogin aria-label="login page">
+      <Text mt={"1rem"} as={"h1"} letterSpacing={1}>
+        Welcome to Your Phonebook
+        <Divider />
+      </Text>
       <section className="container_login">
         <Box borderRadius="5px" className="box_content">
           <figcaption>
-            <img src={imgBg} alt="img menina" />
+            <img
+              src={imgBg}
+              alt="two people messing with their phone book"
+              title="two people messing with their phone book"
+            />
           </figcaption>
           <p>
             Don't waste any more time with just a few clicks, you can have
@@ -73,7 +82,11 @@ export const HomePage = () => {
             onSubmit={handleSubmit(onSubmitForm)}
           >
             <div>
-              <img src={imgflor} alt="" />
+              <img
+                src={imgflor}
+                alt="animated girl image"
+                title="animated girl image"
+              />
             </div>
 
             <div className="title">
@@ -110,8 +123,10 @@ export const HomePage = () => {
               />
               <InputRightElement>
                 <Button
+                  size={"xs"}
                   className="btnEya"
                   variant={"ghost"}
+                  color={"var(--color-text2)"}
                   onClick={() => {
                     setShowPassword(!showPassword);
                   }}

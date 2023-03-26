@@ -58,7 +58,15 @@ export const ModalMyAccount = () => {
               maxW={"100%"}
             >
               <Avatar name={user?.name} src="" />
-              <Text>My name: {user?.name}</Text>
+              <Text
+                css={{
+                  overflow: "hidden",
+                  textOverflow: "auto",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                My name: {user?.name}
+              </Text>
               <Text>My Email: {user?.email}</Text>
               <Text>My phone: {user?.phone}</Text>
             </Flex>

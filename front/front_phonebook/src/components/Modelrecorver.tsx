@@ -34,8 +34,13 @@ export const ModelRecorver = () => {
           </ModalBody>
 
           <ModalFooter display={"block"}>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Deleta
+            <Button
+              _hover={{ bg: "var(--color2)", color: "var(--color-white)" }}
+              colorScheme="blue"
+              mr={3}
+              onClick={onClose}
+            >
+              Recover
             </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close

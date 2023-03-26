@@ -73,9 +73,19 @@ export const HeaderForm = () => {
           <Flex alignItems={"center"}>
             <>
               <Menu>
-                <Text m={1} color={"var(--color-white)"}>
+                <Text
+                  // m={1}
+                  color={"var(--color-white)"}
+                  css={{
+                    maxWidth: "130px",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Hi {user?.name}
                 </Text>
+
                 <MenuButton
                   as={Button}
                   rounded={"full"}
@@ -87,12 +97,22 @@ export const HeaderForm = () => {
                 </MenuButton>
 
                 <MenuList m={-3.5} mt={"4px"} bg={"var(--color-blue2)"}>
-                  <MenuGroup title="Profile">
+                  <MenuGroup
+                    letterSpacing={1}
+                    fontSize={".9em"}
+                    color={"var(--color-text1)"}
+                    title="Profile"
+                  >
                     <ModalMyAccount />
                     <ModalEditUser />
                   </MenuGroup>
                   <MenuDivider />
-                  <MenuGroup title="Help">
+                  <MenuGroup
+                    letterSpacing={1}
+                    fontSize={".9em"}
+                    color={"var(--color-text1)"}
+                    title="Help"
+                  >
                     <MenuItem>
                       <Link
                         href="https://douglasb834.github.io/Documentation/"
@@ -102,7 +122,12 @@ export const HeaderForm = () => {
                       </Link>
                     </MenuItem>
                   </MenuGroup>
-                  <MenuGroup title="Logout">
+                  <MenuGroup
+                    letterSpacing={1}
+                    fontSize={".9em"}
+                    color={"var(--color-text1)"}
+                    title="Logout"
+                  >
                     <MenuItem fontSize={"sm"} onClick={Logout}>
                       Logout
                     </MenuItem>

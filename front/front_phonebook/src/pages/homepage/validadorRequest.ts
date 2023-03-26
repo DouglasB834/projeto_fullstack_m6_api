@@ -17,7 +17,7 @@ export const registerSchema = yup.object().shape({
     .min(6, "min 6 character"),
   passwordConfirmed: yup
     .string()
-    .required("Senha obrigatório")
+    .required("password required")
     .oneOf([yup.ref("password")], "password does not check"),
   phone: yup.string().min(10, "min 10 character").required("Phone is required"),
 });

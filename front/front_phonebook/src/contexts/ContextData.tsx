@@ -45,7 +45,6 @@ export const DataProvider = ({ children }: IChldres) => {
 
   const updadeContact = async (id: string, data: IContacUpdade) => {
     try {
-      setState(true);
       await api.patch(`/contact/${id}`, data);
       toast({
         title: "Create success",
@@ -70,7 +69,7 @@ export const DataProvider = ({ children }: IChldres) => {
         ),
       });
     }
-    setState(false);
+    listContacts();
   };
 
   const createContact = async (data: IContacts) => {

@@ -9,11 +9,6 @@ export const FormStyled = styled.div`
   border-radius: 5px;
   .formLogin {
     max-width: 100%;
-
-    .btnEya {
-      color: var(--color-black);
-      height: auto;
-    }
   }
   .content_check_model {
     display: flex;

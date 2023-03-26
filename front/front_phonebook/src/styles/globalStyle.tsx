@@ -20,8 +20,14 @@ export const StyleGlobal = createGlobalStyle`
     --color-placeholder: #8A8787;
 
 	--color-text1: #fff;
-	
+	--color-text2: #242222;
+	--color-textError: #df2a33;
 
+
+}
+.formErrorMessage{
+color: var(--color-textError);
+font-weight: 600;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, p, blockquote, pre,

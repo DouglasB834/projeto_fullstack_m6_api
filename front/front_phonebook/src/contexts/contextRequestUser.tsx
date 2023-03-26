@@ -9,6 +9,7 @@ import {
   IUserUpdate,
 } from "../interfaces";
 import { Box, useToast } from "@chakra-ui/react";
+import { useLocation } from "react-router-dom";
 
 export interface iRequestProvid {
   login: (data: IUserLogin) => void;
@@ -17,6 +18,7 @@ export interface iRequestProvid {
   registerUser: (data: IUserRegister) => void;
   updateUser: (data: IUserUpdate) => void;
   deleteUser: () => void;
+  privateRoute: boolean;
 }
 
 export const ContextRequestUser = createContext({} as iRequestProvid);
@@ -26,7 +28,9 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
   const navigate = useNavigate();
   const toast = useToast();
   const navegate = useNavigate();
+  const { pathname } = useLocation();
   const token: string | null = localStorage.getItem("@phonebook:token");
+
   const login = async (userData: IUserLogin) => {
     try {
       const response = await api.post("/login", userData);
@@ -144,22 +148,33 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
     }
   };
 
-  const userLogging = async (): Promise<void> => {
-    try {
-      const user: IUser = await api.get("/myUser");
-      setUser(user);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // ROTA PARA BUSCAR USUARIO  LOGADO
+  // const userLogging = async (): Promise<void> => {
+  //   try {
+  //     const user: IUser = await api.get("/myUser");
+  //     // setUser(user);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    userLogging();
-  }, []);
+  // useEffect(() => {
+  //   if (pathname.includes("/home")) {
+  //     userLogging();
+  //   }
+  // }, []);
 
   return (
     <ContextRequestUser.Provider
-      value={{ login, registerUser, user, setUser, updateUser, deleteUser }}
+      value={{
+        login,
+        registerUser,
+        user,
+        setUser,
+        updateUser,
+        deleteUser,
+        privateRoute: !!token,
+      }}
     >
       {children}
     </ContextRequestUser.Provider>
