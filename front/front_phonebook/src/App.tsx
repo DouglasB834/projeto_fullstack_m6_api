@@ -1,13 +1,19 @@
-import { useState } from "react";
-// import viteLogo from '/vite.svg'
+import { ChakraProvider } from "@chakra-ui/react";
 import "./App.css";
+import { MainRouter } from "./Routes";
+import { ContextRequestUserProvider } from "./contexts/contextRequestUser";
+import { DataProvider } from "./contexts/ContextData";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
-      <h1>Jujbas vinheram para jujubar</h1>
+      <ChakraProvider>
+        <ContextRequestUserProvider>
+          <DataProvider>
+            <MainRouter />
+          </DataProvider>
+        </ContextRequestUserProvider>
+      </ChakraProvider>
     </div>
   );
 }

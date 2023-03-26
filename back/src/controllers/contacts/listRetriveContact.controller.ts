@@ -6,6 +6,7 @@ export const retrieverContactcController = async (
   res: Response
 ) => {
   const contactId = req.params.id;
-  const contac = await retrieverContactService(contactId);
+  const userId = req.user.id;
+  const contac = await retrieverContactService(contactId, userId);
   return res.status(200).json(contac);
 };

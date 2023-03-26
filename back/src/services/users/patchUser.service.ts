@@ -10,13 +10,9 @@ export const patchUserService = async (
   UserId: string,
   id: string
 ) => {
-  if (UserId != id) {
-    throw new AppError("You don't have permission to do that");
-  };
-
   if (body.password) {
     body.password = await hash(body.password, 10);
-  };
+  }
 
   const userRepo = AppDataSource.getRepository(Users);
 
