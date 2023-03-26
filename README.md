@@ -11,9 +11,11 @@
 - rode : cd back/ para inicar o banco de dados
 
 - Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas. Portanto utilize o comando abaixo para instalar tais dependências:
+  se atente em fazer isso em ambos as pastas
+  tanto no back quando no front
 
 ```
-yarn install ou npm install
+yarn install ou npm install ou pnpm
 ```
 
 <br>
@@ -37,7 +39,7 @@ yarn dev ou npm run dev
 # Front end
 
 - abrir outro terminal
-- com comando cd front/
+- com comando cd front_phonebook/
 - tente rodar na port 3001 o front ou numa PORT diferente
 
 # Rotas para User
