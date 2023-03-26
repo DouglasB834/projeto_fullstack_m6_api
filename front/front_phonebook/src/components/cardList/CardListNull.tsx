@@ -10,8 +10,6 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Modalregister } from "../Modelas/ModalUpdateContact";
-//nao sei pq nao esta indo tipagem
 export const CardListNull = () => {
   return (
     <Card w={"240px"} h={"335px"} maxW="17rem">

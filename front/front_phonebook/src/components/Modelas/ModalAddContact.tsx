@@ -17,7 +17,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { DataContext } from "../../contexts/ContextData";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";

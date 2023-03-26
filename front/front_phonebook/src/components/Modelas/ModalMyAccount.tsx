@@ -1,14 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Avatar, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import {
   Modal,
   ModalOverlay,

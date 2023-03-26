@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Loginform } from "../../components";
-import { ModelRecorver } from "../../components/ModelRecorver";
+import { ModelRecorver } from "../../components/Modelas/ModelRecorver";
 import { useRequest } from "../../contexts/contextRequestUser";
 import { Modalregister } from "../../components/Modelas/ModalRegister";
 import { useNavigate } from "react-router-dom";

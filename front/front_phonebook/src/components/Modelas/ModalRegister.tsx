@@ -1,9 +1,7 @@
-import { ExternalLinkIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Button,
   Center,
-  Checkbox,
-  Divider,
   FormControl,
   FormLabel,
   Input,

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import imgflor from "../assets/fundo_img.png";
 
 export const FormStyled = styled.div`
   border: 1px solid var(--color1);

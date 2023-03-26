@@ -17,6 +17,8 @@ export interface IContactsProvide {
   deleteContact: (id: string) => void;
   createContact: (data: IContacts) => void;
   updadeContact: (id: string, data: IContacUpdade) => void;
+  search: string;
+  setSeach: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const DataContext = createContext({} as IContactsProvide);
@@ -29,6 +31,7 @@ export const DataProvider = ({ children }: IChldres) => {
   const [contacts, setContacts] = useState<IListContactUser[]>([]);
   const toast = useToast();
   const [state, setState] = useState(false);
+  const [search, setSeach] = useState<string>("");
 
   const listContacts = async (): Promise<void> => {
     try {
@@ -37,6 +40,7 @@ export const DataProvider = ({ children }: IChldres) => {
       setState(true);
       setUser(data[0]);
       setContacts(data[0].contacts);
+      setSeach(data[0].contacts);
     } catch (error) {
       console.log(error, "list contacts failed");
     }
@@ -74,7 +78,6 @@ export const DataProvider = ({ children }: IChldres) => {
 
   const createContact = async (data: IContacts) => {
     try {
-      setState(true);
       await api.post(`/contact/`, data);
       toast({
         title: "Create success",
@@ -100,7 +103,7 @@ export const DataProvider = ({ children }: IChldres) => {
         ),
       });
     } finally {
-      setState(false);
+      listContacts();
     }
   };
 
@@ -137,7 +140,6 @@ export const DataProvider = ({ children }: IChldres) => {
   useEffect(() => {
     if (pathname.includes("/home")) {
       listContacts();
-      // setState(false);
     }
   }, [state, token]);
 
@@ -149,6 +151,8 @@ export const DataProvider = ({ children }: IChldres) => {
         deleteContact,
         createContact,
         updadeContact,
+        search,
+        setSeach,
       }}
     >
       {children}

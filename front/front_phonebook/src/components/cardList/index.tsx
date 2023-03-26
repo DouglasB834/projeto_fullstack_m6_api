@@ -21,12 +21,12 @@ export const CardList = ({ contact }: any) => {
     <Card w={"240px"} h={"335px"} maxW="17rem">
       <CardBody>
         <div className="imgContact">
-          <Avatar name={contact.name} />
+          <Avatar name={contact?.name} />
         </div>
         <Stack mt="6" spacing="1">
           <Heading size="sm">Contact</Heading>
-          <Text>Name: {contact.name}</Text>
-          <Text>Phone: {contact.phone}</Text>
+          <Text>Name: {contact?.name}</Text>
+          <Text>Phone: {contact?.phone}</Text>
           <Text
             css={{
               maxWidth: "190px",
@@ -35,7 +35,7 @@ export const CardList = ({ contact }: any) => {
               whiteSpace: "nowrap",
             }}
           >
-            email: {contact.email}
+            email: {contact?.email}
           </Text>
         </Stack>
       </CardBody>
@@ -50,12 +50,12 @@ export const CardList = ({ contact }: any) => {
             css={{ background: "var(--color1)", color: "red" }}
             variant="solid"
             // colorScheme="blue"
-            onClick={() => deleteContact(contact.id)}
+            onClick={() => deleteContact(contact?.id)}
           >
             Delete
           </Button>
           <Button bg={"blue.200"} variant="ghost" colorScheme="blue">
-            <Modalregister id={contact.id} />
+            <Modalregister id={contact?.id} />
           </Button>
         </ButtonGroup>
       </CardFooter>
