@@ -10,6 +10,7 @@ import { deleteContactController } from "./contacts/deleteContact.controller";
 import { listContactstController } from "./contacts/listContact.controller";
 import { updadeContactController } from "./contacts/update.controller";
 import { retrieverContactcController } from "./contacts/listRetriveContact.controller";
+import { getUserloginController } from "./users/getUserlogin.Controller";
 
 export {
   loginController,
@@ -23,4 +24,5 @@ export {
   listContactstController,
   updadeContactController,
   retrieverContactcController,
+  getUserloginController,
 };
