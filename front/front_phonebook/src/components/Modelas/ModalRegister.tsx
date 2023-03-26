@@ -1,9 +1,7 @@
-import { ExternalLinkIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Button,
   Center,
-  Checkbox,
-  Divider,
   FormControl,
   FormLabel,
   Input,
@@ -24,9 +22,9 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRequest } from "../contexts/contextRequestUser";
-import { IUserRegister } from "../interfaces";
-import { registerSchema } from "../pages/homepage/validadorRequest";
+import { useRequest } from "../../contexts/contextRequestUser";
+import { IUserRegister } from "../../interfaces";
+import { registerSchema } from "../../pages/homepage/validadorRequest";
 
 export const Modalregister = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,27 +48,36 @@ export const Modalregister = () => {
     <>
       <span onClick={onOpen}>Let's go Sign up</span>
 
-      <Modal isOpen={isOpen} onClose={onClose} colorScheme="blue">
+      <Modal
+        aria-labelledby="title"
+        isOpen={isOpen}
+        onClose={onClose}
+        colorScheme="blue"
+      >
         <ModalOverlay />
         <ModalContent className="container_modal">
-          <ModalHeader alignSelf={"center"}>Register </ModalHeader>
+          <ModalHeader id="title" alignSelf={"center"}>
+            Register
+          </ModalHeader>
 
           <ModalCloseButton />
 
-          <ModalBody bg={"var(--color-blue3)"}>
+          <ModalBody borderRadius={5} bg={"var(--color-blue3)"}>
             <FormControl
               className="formLogin"
               isRequired
               onSubmit={handleSubmit(onSubmitForm)}
             >
-              <Center>
+              <Center display={"flex"} flexDirection="column" mt={2}>
+                <Text fontWeight={600} fontSize={"1.1rem"} as={"h2"}>
+                  Create your account{" "}
+                </Text>
                 <Text
-                  color={"--color-text"}
-                  fontSize={"1.1rem"}
-                  fontWeight={600}
+                  letterSpacing={"1px"}
+                  color={"var(--color1)"}
+                  fontWeight={500}
                 >
-                  <h2>There is little left to start</h2>
-                  <p>Create your account </p>
+                  There is little left to start
                 </Text>
               </Center>
 
@@ -78,7 +85,8 @@ export const Modalregister = () => {
                 Name
               </FormLabel>
               <Input
-                _placeholder={{ color: "white" }}
+                color="white"
+                _placeholder={{ color: "var(--color1)" }}
                 placeholder="Name..."
                 required
                 size="sm"
@@ -87,12 +95,46 @@ export const Modalregister = () => {
                 type="text"
                 {...register("name")}
               />
-              <p>{errors.name?.message}</p>
+              <p className="formErrorMessage">{errors.name?.message}</p>
+
+              <FormLabel marginTop={"1rem"} fontSize=".9rem">
+                E-mail
+              </FormLabel>
+              <Input
+                color="white"
+                _placeholder={{ color: "var(--color1)" }}
+                placeholder="Email"
+                required
+                size="sm"
+                borderRadius={"5px"}
+                focusBorderColor="blue.300"
+                type="email"
+                {...register("email")}
+              />
+              <p className="formErrorMessage">{errors.email?.message}</p>
+
+              <FormLabel marginTop={"1rem"} fontSize=".9rem">
+                Phonne
+              </FormLabel>
+              <Input
+                color="white"
+                _placeholder={{ color: "var(--color1)" }}
+                placeholder="Phone"
+                required
+                size="sm"
+                borderRadius={"5px"}
+                focusBorderColor="blue.300"
+                type="text"
+                {...register("phone")}
+              />
+
+              <p className="formErrorMessage">{errors.phone?.message}</p>
 
               <FormLabel marginTop={"1rem"}>Password</FormLabel>
               <InputGroup>
                 <Input
-                  _placeholder={{ color: "white" }}
+                  color="white"
+                  _placeholder={{ color: "var(--color1)" }}
                   placeholder="password"
                   size="sm"
                   borderRadius={"5px"}
@@ -103,6 +145,7 @@ export const Modalregister = () => {
                 />
                 <InputRightElement>
                   <Button
+                    size={"xs"}
                     className="btnEya"
                     variant={"ghost"}
                     onClick={() => {
@@ -113,12 +156,13 @@ export const Modalregister = () => {
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              <p>{errors.password?.message}</p>
+              <p className="formErrorMessage">{errors.password?.message}</p>
 
               <FormLabel marginTop={"1rem"}>Confirm password</FormLabel>
               <InputGroup>
                 <Input
-                  _placeholder={{ color: "white" }}
+                  color="white"
+                  _placeholder={{ color: "var(--color1)" }}
                   placeholder="confirm password"
                   size="sm"
                   borderRadius={"5px"}
@@ -130,8 +174,10 @@ export const Modalregister = () => {
 
                 <InputRightElement>
                   <Button
+                    size={"xs"}
                     className="btnEya"
                     variant={"ghost"}
+                    color={"var(--color-text)"}
                     onClick={() => {
                       setConfirmPassword(!confirmPassword);
                     }}
@@ -140,38 +186,9 @@ export const Modalregister = () => {
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              <p>{errors.passwordConfirmed?.message}</p>
-
-              <FormLabel marginTop={"1rem"} fontSize=".9rem">
-                E-mail
-              </FormLabel>
-              <Input
-                _placeholder={{ color: "white" }}
-                placeholder="Email"
-                required
-                size="sm"
-                borderRadius={"5px"}
-                focusBorderColor="blue.300"
-                type="email"
-                {...register("email")}
-              />
-              <p>{errors.email?.message}</p>
-
-              <FormLabel marginTop={"1rem"} fontSize=".9rem">
-                Phonne
-              </FormLabel>
-              <Input
-                color="white"
-                _placeholder={{ color: "white" }}
-                placeholder="Phone"
-                required
-                size="sm"
-                borderRadius={"5px"}
-                focusBorderColor="blue.300"
-                type="text"
-                {...register("phone")}
-              />
-              <p>{errors.phone?.message}</p>
+              <p className="formErrorMessage">
+                {errors.passwordConfirmed?.message}
+              </p>
             </FormControl>
 
             <div className="container_links">
@@ -182,7 +199,7 @@ export const Modalregister = () => {
                 color={"var(--color-black)"}
                 bg={"var(--color5)"}
                 className="btnLogin"
-                _hover={{ bg: "var(--color2)", color: "var(--color-white)" }}
+                _hover={{ bg: "var(--color1)", color: "var(--color-white)" }}
                 onClick={handleSubmit(onSubmitForm)}
               >
                 registar

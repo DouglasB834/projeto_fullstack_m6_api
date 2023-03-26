@@ -1,5 +1,4 @@
 import { ChakraProvider } from "@chakra-ui/react";
-// import viteLogo from '/vite.svg'
 import "./App.css";
 import { MainRouter } from "./Routes";
 import { ContextRequestUserProvider } from "./contexts/contextRequestUser";
