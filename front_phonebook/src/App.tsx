@@ -1,5 +1,4 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import "./App.css";
 import { MainRouter } from "./Routes";
 import { ContextRequestUserProvider } from "./contexts/contextRequestUser";
 import { DataProvider } from "./contexts/ContextData";
