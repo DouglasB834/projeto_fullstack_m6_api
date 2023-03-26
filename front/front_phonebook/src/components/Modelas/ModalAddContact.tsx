@@ -17,9 +17,31 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import { useContext, useRef } from "react";
+import { DataContext } from "../../contexts/ContextData";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { IContacts } from "../../interfaces";
+import { CreateContactSchema } from "../../ValidadeSchemas/validationSchema";
 
 export const ModalAddContact = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<IContacts>({
+    resolver: yupResolver(CreateContactSchema),
+  });
+  const { createContact } = useContext(DataContext);
+
+  const handleCreatContact = (data: IContacts) => {
+    createContact(data);
+    reset();
+    onClose();
+  };
 
   return (
     <>
@@ -36,7 +58,7 @@ export const ModalAddContact = () => {
           <ModalHeader alignSelf={"center"}>Add new Contact </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl>
+            <FormControl onSubmit={handleSubmit(handleCreatContact)}>
               <FormLabel marginTop={"1rem"} fontSize=".9rem">
                 Name
               </FormLabel>
@@ -49,14 +71,14 @@ export const ModalAddContact = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="text"
-                  // {...register("name")}
+                  {...register("name")}
                 />
-                {/* <p>{errors.name?.message}</p> */}
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<ChatIcon color={"gray.300"} />}
                 />
               </InputGroup>
+              <p>{errors.name?.message}</p>
               <FormLabel marginTop={"1rem"} fontSize=".9rem">
                 E-mail
               </FormLabel>
@@ -69,14 +91,14 @@ export const ModalAddContact = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="text"
-                  // {...register("name")}
+                  {...register("email")}
                 />
-                {/* <p>{errors.name?.message}</p> */}
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<AtSignIcon color="gray.300" />}
                 />
               </InputGroup>
+              <p>{errors.email?.message}</p>
               <FormLabel marginTop={"1rem"} fontSize=".9rem">
                 Phone
               </FormLabel>
@@ -89,23 +111,23 @@ export const ModalAddContact = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="text"
-                  // {...register("name")}
+                  {...register("phone")}
                 />
-                {/* <p>{errors.name?.message}</p> */}
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<PhoneIcon color="gray.300" />}
                 />
               </InputGroup>
+              <p>{errors.phone?.message}</p>
             </FormControl>
           </ModalBody>
 
-          <ModalFooter
-            display={"flex"}
-            // flexDirection={"column"}
-            justifyContent={"space-between"}
-          >
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <ModalFooter display={"flex"} justifyContent={"space-between"}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={handleSubmit(handleCreatContact)}
+            >
               Enviar
             </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>

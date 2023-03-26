@@ -10,7 +10,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Text,
@@ -18,11 +17,23 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useRequest } from "../../contexts/contextRequestUser";
-import { IUser } from "../../interfaces";
+import { IUser, IUserUpdate } from "../../interfaces";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { UpdadeSchema } from "../../ValidadeSchemas/validationSchema";
 
 export const ModalEditUser = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { user } = useRequest();
+  const { user, updateUser } = useRequest();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<IUserUpdate>({
+    resolver: yupResolver(UpdadeSchema),
+  });
 
   const OverlayOne = () => (
     <ModalOverlay
@@ -33,7 +44,9 @@ export const ModalEditUser = () => {
     />
   );
 
-  const handleEditUser = (data: IUser) => {
+  const handleUpdadetUser = (data: IUserUpdate) => {
+    updateUser(data);
+    reset();
     onClose();
   };
 
@@ -60,7 +73,8 @@ export const ModalEditUser = () => {
           <ModalCloseButton />
           <ModalBody>
             <Text>edit your account!</Text>
-            <FormControl isRequired>
+
+            <FormControl isRequired onSubmit={handleSubmit(handleUpdadetUser)}>
               <FormLabel marginTop={"1rem"} fontSize=".9rem">
                 Name
               </FormLabel>
@@ -73,14 +87,15 @@ export const ModalEditUser = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="text"
-                  // {...register("name")}
+                  {...register("name")}
+                  defaultValue={user?.name}
                 />
-                {/* <p>{errors.name?.message}</p> */}
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<ChatIcon color={"gray.300"} />}
                 />
               </InputGroup>
+              <p>{errors.name?.message}</p>
 
               <FormLabel>email</FormLabel>
               <InputGroup>
@@ -92,12 +107,15 @@ export const ModalEditUser = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="text"
+                  {...register("email")}
+                  defaultValue={user?.email}
                 />
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<AtSignIcon color="gray.300" />}
                 />
               </InputGroup>
+              <p>{errors.email?.message}</p>
 
               <FormLabel>Phone</FormLabel>
               <InputGroup>
@@ -109,13 +127,17 @@ export const ModalEditUser = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="text"
+                  {...register("phone")}
+                  defaultValue={user?.phone}
                 />
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<PhoneIcon color="gray.300" />}
                 />
               </InputGroup>
-              <FormLabel>Password</FormLabel>
+              <p>{errors.phone?.message}</p>
+
+              <FormLabel> Confime password</FormLabel>
               <InputGroup>
                 <Input
                   _placeholder={{ color: "var(color-text)" }}
@@ -125,16 +147,21 @@ export const ModalEditUser = () => {
                   borderRadius={"5px"}
                   focusBorderColor="blue.300"
                   type="password"
+                  {...register("password")}
                 />
                 <InputRightElement
                   pointerEvents={"none"}
                   children={<LockIcon color="gray.300" />}
                 />
               </InputGroup>
+              <p>{errors.password?.message}</p>
+
               <Button
                 w={"100%"}
                 m={"1rem auto "}
                 _hover={{ bg: "var(--color2)", color: "var(--color-white)" }}
+                type={"submit"}
+                onClick={handleSubmit(handleUpdadetUser)}
               >
                 Edit Profile
               </Button>

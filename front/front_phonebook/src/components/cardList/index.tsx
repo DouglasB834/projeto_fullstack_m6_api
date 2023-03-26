@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Box,
   Button,
   ButtonGroup,
   Card,
@@ -11,19 +10,32 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/ContextData";
+import { Modalregister } from "../Modelas/ModalUpdateContact";
+//nao sei pq nao esta indo tipagem
+export const CardList = ({ contact }: any) => {
+  const { deleteContact } = useContext(DataContext);
 
-export const CardList = () => {
   return (
-    <Card maxH={335} maxW="17rem">
+    <Card w={"240px"} h={"335px"} maxW="17rem">
       <CardBody>
         <div className="imgContact">
-          <Avatar name="jujuba ju" />
+          <Avatar name={contact.name} />
         </div>
         <Stack mt="6" spacing="1">
           <Heading size="sm">Contact</Heading>
-          <Text>Name: douglas</Text>
-          <Text>Phone: 21 983003101</Text>
-          <Text>email: douglas_compras_borges09@hotmail.com</Text>
+          <Text>Name: {contact.name}</Text>
+          <Text>Phone: {contact.phone}</Text>
+          <Text
+            css={{
+              maxWidth: "190px",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            email: {contact.email}
+          </Text>
         </Stack>
       </CardBody>
       <Divider />
@@ -37,11 +49,12 @@ export const CardList = () => {
             css={{ background: "var(--color1)", color: "red" }}
             variant="solid"
             // colorScheme="blue"
+            onClick={() => deleteContact(contact.id)}
           >
             Delete
           </Button>
           <Button bg={"blue.200"} variant="ghost" colorScheme="blue">
-            Editar
+            <Modalregister id={contact.id} />
           </Button>
         </ButtonGroup>
       </CardFooter>

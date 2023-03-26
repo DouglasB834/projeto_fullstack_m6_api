@@ -1,25 +1,32 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../Api/axios";
-import { IChldres, IUser, IUserLogin, IUserRegister } from "../interfaces";
+import {
+  IChldres,
+  IUser,
+  IUserLogin,
+  IUserRegister,
+  IUserUpdate,
+} from "../interfaces";
 import { Box, useToast } from "@chakra-ui/react";
-import { DataContext } from "./ContextData";
 
 export interface iRequestProvid {
   login: (data: IUserLogin) => void;
   user: IUser;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   registerUser: (data: IUserRegister) => void;
+  updateUser: (data: IUserUpdate) => void;
+  deleteUser: () => void;
 }
 
 export const ContextRequestUser = createContext({} as iRequestProvid);
 
 export const ContextRequestUserProvider = ({ children }: IChldres) => {
-  // const { setUser } = useContext(DataContext);
   const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
   const toast = useToast();
-
+  const navegate = useNavigate();
+  const token: string | null = localStorage.getItem("@phonebook:token");
   const login = async (userData: IUserLogin) => {
     try {
       const response = await api.post("/login", userData);
@@ -73,8 +80,87 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
     }
   };
 
+  const updateUser = async (data: IUserUpdate) => {
+    // if()
+    try {
+      const response = await api.patch("/users", data);
+      toast({
+        title: "Create success",
+        position: "top-right",
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="blue.500">
+            Create success...
+          </Box>
+        ),
+      });
+      setUser(response.data);
+    } catch (error: any) {
+      console.log(error);
+
+      const toastmsg = error.response.data.message;
+      toast({
+        title: "error loging",
+        position: "top-right",
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="red.400">
+            {`${toastmsg}`}
+          </Box>
+        ),
+      });
+    }
+  };
+
+  const deleteUser = async () => {
+    try {
+      await api.delete("/users");
+      toast({
+        title: "Create success",
+        position: "top-right",
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="blue.500">
+            Success delete...
+          </Box>
+        ),
+      });
+      localStorage.removeItem("@phonebook:token");
+      localStorage.removeItem("phonebook:id");
+      navegate("/");
+    } catch (error: any) {
+      console.log(error);
+      const toastmsg = error.response.data.message;
+      toast({
+        title: "error loging",
+        position: "top-right",
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="red.400">
+            {`${toastmsg}`}
+          </Box>
+        ),
+      });
+    }
+  };
+
+  const userLogging = async (): Promise<void> => {
+    try {
+      const user: IUser = await api.get("/myUser");
+      setUser(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    userLogging();
+  }, []);
+
   return (
-    <ContextRequestUser.Provider value={{ login, registerUser, user, setUser }}>
+    <ContextRequestUser.Provider
+      value={{ login, registerUser, user, setUser, updateUser, deleteUser }}
+    >
       {children}
     </ContextRequestUser.Provider>
   );
