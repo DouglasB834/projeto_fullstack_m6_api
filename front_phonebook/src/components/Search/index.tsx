@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { DataContext } from "../../contexts/ContextData";
 
 export const SeactContact = () => {
-  const { setSeach } = useContext(DataContext);
+  const { setSeach, search } = useContext(DataContext);
 
   return (
     <InputGroup maxW={250}>
@@ -16,6 +16,7 @@ export const SeactContact = () => {
         onChange={(e) => {
           setSeach(e.target.value);
         }}
+        defaultValue={search}
         _hover={{ borderColor: "var(--color2)" }}
         type="text"
         css={{ "::placeholder": { color: "var(--color-text)" } }}

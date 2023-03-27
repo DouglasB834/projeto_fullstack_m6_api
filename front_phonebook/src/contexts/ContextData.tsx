@@ -40,7 +40,6 @@ export const DataProvider = ({ children }: IChldres) => {
       setState(true);
       setUser(data[0]);
       setContacts(data[0].contacts);
-      setSeach(data[0].contacts);
     } catch (error) {
       console.log(error, "list contacts failed");
     }
