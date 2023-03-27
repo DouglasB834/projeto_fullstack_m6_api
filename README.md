@@ -4,6 +4,11 @@
 
 ### Como rodar o projeto
 
+- [Back end](#back-end)
+- [Front end](#front-end)
+
+<br>
+
 ![Library](m6.drawio.png)
 
 # comandos basicos
@@ -22,15 +27,30 @@ git clone git@github.com:DouglasB834/projeto_fullstack_m6_api.git
  npm install
 ```
 
-# Rodando back end
+# Back-end
+
+## Rodando back end
 
 - abra um terminal na sua pasta principal
 - rode comando $ cd back/ ja dentro da pasta, para inicar o banco de dados,
 - dentro ja pasta usar comando npm install | npm
 - **Configure as variáveis de ambiente no seu .env**, passando as credenciais corretas para conectar em seu banco local
+- rode o npm / yarn : "build": "tsc"
 - use comando as Migrations que ja vem criadas com comando
 - com as migrations prontas rode npm run dev
-  <br>
+- <br>
+- caso venha a ter problema a mais verifique
+
+```
+  const entitiesPath: string = path.join(__dirname, "./entities/**.{js,ts}");
+  const migrations: string = path.join(__dirname, "./migrations/**.{js,ts}");,
+  talves tenha que passar as migrations manualmente
+```
+
+exemplo: const entitiesPath: [contacts1679397477558, fixContact1679633322339];
+exemplo: const migrations: [Users,Contacts];,
+
+- <br>
 
 ```
 yarn typeorm migration:run -d src/data-source
@@ -48,15 +68,18 @@ npm run dev
 
 <br>
 
-# Como rodar a parte do Front end
+# Front-end
+
+## Como rodar a parte do Front end
 
 - abrir terminal
 - rode comando $ cd front_phonebook/
 - faça o comando npm install
 - tente rodar na port 3001 o front ou numa PORT diferente
-- comando para rodar o serve : npm | yar | pnpm : run dev
+- comando para rodar o serve : npm | yarn | pnpm : run dev
 
 <br>
+
 # Rotas para User
 
 ## POST /users - Criar um usuário / cadastrar
