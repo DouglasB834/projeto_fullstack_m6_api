@@ -6,42 +6,57 @@
 
 ![Library](m6.drawio.png)
 
-- faça o clone teste repositírio
-- abra um terminal na sua pasta principal
-- rode : cd back/ para inicar o banco de dados
+# comandos basicos
 
-- Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas. Portanto utilize o comando abaixo para instalar tais dependências:
-  se atente em fazer isso em ambos as pastas
-  tanto no back quando no front
+### faça o clone deste repositírio
 
 ```
-yarn install ou npm install ou pnpm
+git clone git@github.com:DouglasB834/projeto_fullstack_m6_api.git
+```
+
+- Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas.
+  Portanto utilize o comando abaixo para instalar tais dependências:
+  se atente em fazer isso em ambos as pastas tanto no back quando no front
+
+```
+ npm install
+```
+
+# Rodando back end
+
+- abra um terminal na sua pasta principal
+- rode comando $ cd back/ ja dentro da pasta, para inicar o banco de dados,
+- dentro ja pasta usar comando npm install | npm
+- **Configure as variáveis de ambiente no seu .env**, passando as credenciais corretas para conectar em seu banco local
+- use comando as Migrations que ja vem criadas com comando
+- com as migrations prontas rode npm run dev
+  <br>
+
+```
+yarn typeorm migration:run -d src/data-source
 ```
 
 <br>
 
 ### Rodar o servidor.
 
-```
-npm run dev ou yarn dev
-```
-
-**Configure as variáveis de ambiente no seu .env**, passando as credenciais corretas para conectar em seu banco local
-
 Com isso feito, para rodar sua aplicação, basta utilizar o comando
 
 ```
-yarn dev ou npm run dev
+npm run dev
 ```
 
 <br>
 
-# Front end
+# Como rodar a parte do Front end
 
-- abrir outro terminal
-- com comando cd front_phonebook/
+- abrir terminal
+- rode comando $ cd front_phonebook/
+- faça o comando npm install
 - tente rodar na port 3001 o front ou numa PORT diferente
+- comando para rodar o serve : npm | yar | pnpm : run dev
 
+<br>
 # Rotas para User
 
 ## POST /users - Criar um usuário / cadastrar
