@@ -47,37 +47,29 @@ export const Dashboard = () => {
             </Box>
             <SeactContact />
           </Flex>
-          {/* === nao estou conseguindo fazer o filter corretamente . se colocar console.log no ultimo returno , que estava colocando return null ele vem cada objeto , porem no map vem vazio da primeira vez se de um refresh na pagina, quando escreve no input ele rederiza normal  =====  */}
+
           <UlStyled>
             {contacts.length > 0 ? (
-              contacts
-                ?.filter((e) => {
-                  if (search === "") {
-                    return e;
-                  } else if (
-                    e.name.includes(search) ||
-                    e.phone.includes(search)
-                  ) {
-                    return e;
-                  }
-                  return e;
-                })
-                .map((contact) => {
+              search == "" ? (
+                contacts.map((contact) => {
                   return <CardList key={contact.id} contact={contact} />;
                 })
+              ) : (
+                contacts
+                  ?.filter((e) => {
+                    if (e.name.includes(search) || e.phone.includes(search)) {
+                      return e;
+                    }
+                  })
+                  .map((contact) => {
+                    console.log(contact);
+                    return <CardList key={contact.id} contact={contact} />;
+                  })
+              )
             ) : (
               <CardListNull />
             )}
           </UlStyled>
-          {/* <UlStyled>
-            {contacts.length > 0 ? (
-              contacts.map((contac) => (
-                <CardList key={contac.id} contact={contac} />
-              ))
-            ) : (
-              <CardListNull />
-            )}
-          </UlStyled> */}
         </Box>
       </DashBoardMain>
     </>
