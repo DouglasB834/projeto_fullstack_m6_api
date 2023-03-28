@@ -1,4 +1,5 @@
 import { Box, useToast } from "@chakra-ui/react";
+import { AxiosError } from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { api } from "../Api/axios";
@@ -7,7 +8,6 @@ import {
   IContacts,
   IContacUpdade,
   IListContactUser,
-  IUser,
 } from "../interfaces";
 import { useRequest } from "./contextRequestUser";
 
@@ -25,9 +25,8 @@ export const DataContext = createContext({} as IContactsProvide);
 
 export const DataProvider = ({ children }: IChldres) => {
   const token: string | null = localStorage.getItem("@phonebook:token");
-  const idUser = localStorage.getItem("@phonebook:id");
   const { pathname } = useLocation();
-  const { setUser, user } = useRequest();
+  const { setUser } = useRequest();
   const [contacts, setContacts] = useState<IListContactUser[]>([]);
   const toast = useToast();
   const [state, setState] = useState(false);
@@ -89,7 +88,6 @@ export const DataProvider = ({ children }: IChldres) => {
         ),
       });
     } catch (error: any) {
-      console.log(error);
       const toastmsg = error.response.data.message;
       toast({
         title: "error loging",
@@ -121,7 +119,6 @@ export const DataProvider = ({ children }: IChldres) => {
         ),
       });
     } catch (error: any) {
-      console.log(error);
       const toastmsg = error.response.data.message;
       toast({
         title: "error loging",
@@ -158,7 +155,3 @@ export const DataProvider = ({ children }: IChldres) => {
     </DataContext.Provider>
   );
 };
-
-// export const useContactContext = () => {
-//   const context = useContext(DataContext)
-// };

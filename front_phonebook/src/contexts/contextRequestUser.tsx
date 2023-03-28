@@ -10,6 +10,7 @@ import {
 } from "../interfaces";
 import { Box, useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
+import { AxiosError } from "axios";
 
 export interface iRequestProvid {
   login: (data: IUserLogin) => void;
@@ -85,7 +86,6 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
   };
 
   const updateUser = async (data: IUserUpdate) => {
-    // if()
     try {
       const response = await api.patch("/users", data);
       toast({
@@ -100,8 +100,6 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
       });
       setUser(response.data);
     } catch (error: any) {
-      console.log(error);
-
       const toastmsg = error.response.data.message;
       toast({
         title: "error loging",
@@ -133,7 +131,6 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
       localStorage.removeItem("phonebook:id");
       navegate("/");
     } catch (error: any) {
-      console.log(error);
       const toastmsg = error.response.data.message;
       toast({
         title: "error loging",
@@ -147,22 +144,6 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
       });
     }
   };
-
-  // ROTA PARA BUSCAR USUARIO  LOGADO
-  // const userLogging = async (): Promise<void> => {
-  //   try {
-  //     const user: IUser = await api.get("/myUser");
-  //     // setUser(user);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (pathname.includes("/home")) {
-  //     userLogging();
-  //   }
-  // }, []);
 
   return (
     <ContextRequestUser.Provider
@@ -181,5 +162,4 @@ export const ContextRequestUserProvider = ({ children }: IChldres) => {
   );
 };
 
-//criando meu hook
 export const useRequest = () => useContext(ContextRequestUser);

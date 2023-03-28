@@ -43,7 +43,6 @@ export const CardListNull = () => {
           <Button
             css={{ background: "var(--color1)", color: "red" }}
             variant="solid"
-            // colorScheme="blue"
           >
             Delete
           </Button>

@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { Contacts } from "../../entities/contacts";
 import { IContactRequest } from "../../interfaces/users";
 import { createNewContactService } from "../../services";
 

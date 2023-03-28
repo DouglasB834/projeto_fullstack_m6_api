@@ -1,4 +1,3 @@
-import { SearchIcon } from "@chakra-ui/icons";
 import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import { CardList } from "../../components/cardList";
 import { HeaderForm } from "../../components/Header";
@@ -62,7 +61,6 @@ export const Dashboard = () => {
                     }
                   })
                   .map((contact) => {
-                    console.log(contact);
                     return <CardList key={contact.id} contact={contact} />;
                   })
               )

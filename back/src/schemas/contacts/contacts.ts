@@ -26,7 +26,6 @@ export const contactResponseSchema: SchemaOf<IContactResponse> = yup
     email: yup.string().email().required(),
     phone: yup.string().required(),
     createdAt: yup.date().required(),
-    // user: userResponseSchema,
   });
 
 export const userPetsResponseSchema = yup.object().shape({
