@@ -1,9 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { extendTheme } from "@chakra-ui/react";
-
 export const StyleGlobal = createGlobalStyle`
-
-
 
 :root{
     --color-black:#242222;

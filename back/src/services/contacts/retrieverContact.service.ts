@@ -19,7 +19,6 @@ export const retrieverContactService = async (
   if (contactObj.user.id !== userId) {
     throw new AppError("You don't have permission to delete this contact", 401);
   }
-  //se de rum mudar aq
 
   return contactObj;
 };

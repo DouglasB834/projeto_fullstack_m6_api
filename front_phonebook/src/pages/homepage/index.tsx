@@ -55,7 +55,6 @@ export const HomePage = () => {
   }, []);
 
   return (
-    // <Center>
     <StyledMainLogin aria-label="login page">
       <Text mt={"1rem"} as={"h1"} letterSpacing={1}>
         Welcome to Your Phonebook
@@ -167,6 +166,5 @@ export const HomePage = () => {
         </Loginform>
       </section>
     </StyledMainLogin>
-    // </Center>
   );
 };

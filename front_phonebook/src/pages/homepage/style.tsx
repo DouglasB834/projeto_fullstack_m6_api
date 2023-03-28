@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ImageUrl from "../../assets/filhas_url.png";
 
 export const StyledMainLogin = styled.main`
   display: flex;
@@ -8,7 +7,6 @@ export const StyledMainLogin = styled.main`
   width: 100%;
   flex-direction: column;
   gap: 1rem;
-  background: url(ImageUrl);
   object-fit: cover;
 
   h1 {

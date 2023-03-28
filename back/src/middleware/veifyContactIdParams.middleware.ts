@@ -8,7 +8,6 @@ export const verifyContactIdParameter = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const userRepo = AppDataSource.getRepository(Users);
   const { id } = req.params;
   const regexExp =
     /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;

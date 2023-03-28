@@ -1,11 +1,6 @@
 import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Users } from "./usersEntity";
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Column, CreateDateColumn } from "typeorm";
 
 @Entity("contacts")
 export class Contacts {
