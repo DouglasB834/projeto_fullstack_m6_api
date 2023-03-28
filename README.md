@@ -31,25 +31,12 @@ git clone git@github.com:DouglasB834/projeto_fullstack_m6_api.git
 
 ## Rodando back end
 
-- abra um terminal na sua pasta principal
-- rode comando $ cd back/ ja dentro da pasta, para inicar o banco de dados,
-- dentro ja pasta usar comando npm install | npm
+- Abra um terminal na sua pasta principal
+- rode o comando $ cd back/ ja dentro da pasta, para inicar o banco de dados
+- Ja na pasta usar comando npm install
 - **Configure as variáveis de ambiente no seu .env**, passando as credenciais corretas para conectar em seu banco local
-- rode o npm / yarn : "build": "tsc"
-- use comando as Migrations que ja vem criadas com comando
-- com as migrations prontas rode npm run dev
-- <br>
-- caso venha a ter problema a mais verifique
-
-```
-  const entitiesPath: string = path.join(__dirname, "./entities/**.{js,ts}");
-  const migrations: string = path.join(__dirname, "./migrations/**.{js,ts}");,
-  talves tenha que passar as migrations manualmente
-```
-
-exemplo: const entitiesPath: [contacts1679397477558, fixContact1679633322339];
-exemplo: const migrations: [Users,Contacts];,
-
+- use o comando para criar as Migrations
+- com as migrations criadas rode **npm run dev**
 - <br>
 
 ```
@@ -73,10 +60,9 @@ npm run dev
 ## Como rodar a parte do Front end
 
 - abrir terminal
-- rode comando $ cd front_phonebook/
+- rode comando $ **_ cd front_phonebook/_**
 - faça o comando npm install
-- tente rodar na port 3001 o front ou numa PORT diferente
-- comando para rodar o serve : npm | yarn | pnpm : run dev
+- comando para rodar o serve **_npm run dev_**
 
 <br>
 

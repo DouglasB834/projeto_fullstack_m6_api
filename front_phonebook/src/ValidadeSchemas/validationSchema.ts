@@ -14,7 +14,6 @@ export const UpdadeContactSchema = yup.object().shape({
   phone: yup.string(),
 });
 
-// Contacts
 export const CreateContactSchema = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email("Invalid field.").required(),

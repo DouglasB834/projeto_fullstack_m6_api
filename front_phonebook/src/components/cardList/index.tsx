@@ -13,7 +13,6 @@ import {
 import { useContext } from "react";
 import { DataContext } from "../../contexts/ContextData";
 import { Modalregister } from "../Modelas/ModalUpdateContact";
-//nao sei pq nao esta indo tipagem
 export const CardList = ({ contact }: any) => {
   const { deleteContact } = useContext(DataContext);
 

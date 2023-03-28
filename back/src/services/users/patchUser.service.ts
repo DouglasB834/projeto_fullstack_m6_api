@@ -1,7 +1,6 @@
 import { hash } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { Users } from "../../entities/usersEntity";
-import AppError from "../../errors/AppError";
 import { IUserUpdate } from "../../interfaces/users";
 import { updateUserResponseSchema } from "../../schemas";
 

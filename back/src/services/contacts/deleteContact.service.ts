@@ -25,8 +25,4 @@ export const deleteContactService = async (
   await contactRepository.remove(contact);
 
   return {};
-
-  // if (pet.user.id !== userId) {
-  //   throw new AppError("No access permission", 403);
-  // };
 };

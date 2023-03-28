@@ -206,7 +206,6 @@ export const Modalregister = () => {
               </Button>
             </div>
           </ModalBody>
-          {/* <ModalFooter></ModalFooter> */}
         </ModalContent>
       </Modal>
     </>
